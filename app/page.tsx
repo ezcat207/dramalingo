@@ -80,11 +80,14 @@ export default function Home() {
             </div>
 
             {/* CTA Button */}
-            <div className="block w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center py-4 rounded-xl font-semibold text-lg shadow-lg cursor-not-allowed opacity-75">
-              Coming Soon: Start Learning 开始学习 →
-            </div>
+            <Link
+              href="/learn/inside-outside/1"
+              className="block w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
+            >
+              Start Learning 开始学习 →
+            </Link>
             <p className="text-center text-sm text-gray-500 mt-2">
-              Episode player & quiz system coming in Phase 2
+              Begin with Episode 1: {mvpDrama.episodes[0].title}
             </p>
 
             {/* Episode List Preview */}
@@ -94,9 +97,10 @@ export default function Home() {
               </h4>
               <div className="space-y-3">
                 {mvpDrama.episodes.map((episode) => (
-                  <div
+                  <Link
                     key={episode.episodeNumber}
-                    className="block p-4 bg-gray-50 rounded-lg"
+                    href={`/learn/inside-outside/${episode.episodeNumber}`}
+                    className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
                   >
                     <div className="font-medium text-gray-900">
                       Episode {episode.episodeNumber}: {episode.title}
@@ -107,7 +111,7 @@ export default function Home() {
                     <div className="text-xs text-gray-500 mt-2">
                       {episode.quizzes.length} quizzes ready
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
